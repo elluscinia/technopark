@@ -7,12 +7,6 @@ import itertools
 import operator
 from prettytable import PrettyTable
 
-# TODO:
-#       1) вынести ключевые операции в функции и написать к ним описание - DONE
-#       2) дописать вывод информации о команде - DONE
-#       3) сортировка результатов чимпионата: очки-побед-забитых голов, а потом присвоение мест, с учётом, что может быть одинаковое кол-во очков
-#       4) Откуда берём список команд? Задаём в программе или "скармливаем" ей при запуске через командную строку?
-
 class Team:
     def __init__(self, name):
         self.name = name                # название команды
@@ -44,6 +38,13 @@ def get_championship_table(teams):
     return championship_table
 
 def get_information_about_match(team_name_1, team_name_2, results):
+    '''
+    Получить информацию о матче
+    :param team_name_1: название команды
+    :param team_name_2: название команды
+    :param results: результаты чемпионата
+    :param return: результаты матча, если таковой существует
+    '''
     if (team_name_1, team_name_2) in results:
         score_1, score_2 = results.get((team_name_1, team_name_2))
     elif (team_name_2, team_name_1) in results:
